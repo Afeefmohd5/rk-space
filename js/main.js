@@ -15,10 +15,45 @@
             }
         }
         toggleNavbarMethod();
-        $(window).resize(toggleNavbarMethod);
+    $(window).resize(toggleNavbarMethod);
     });
-    
-    
+
+    // WhatsApp button click handler
+    $('#sendWhatsAppButton').click(function () {
+        var name = $('#name').val().trim();
+        var email = $('#email').val().trim();
+        var subject = $('#subject').val().trim();
+        var message = $('#message').val().trim();
+
+        if (!name) {
+            alert('Please enter your name');
+            return;
+        }
+        if (!email) {
+            alert('Please enter your email');
+            return;
+        }
+        if (!subject) {
+            alert('Please enter a subject');
+            return;
+        }
+        if (!message) {
+            alert('Please enter your message');
+            return;
+        }
+
+        var whatsappNumber = '919071268176'; // country code + number without +
+        var whatsappMessage = 
+            'Name: ' + name + '%0A' +
+            'Email: ' + email + '%0A' +
+            'Subject: ' + subject + '%0A' +
+            'Message: ' + message;
+
+        var whatsappURL = 'https://wa.me/' + whatsappNumber + '?text=' + whatsappMessage;
+
+        window.open(whatsappURL, '_blank');
+    });
+
     // Back to top button
     $(window).scroll(function () {
         if ($(this).scrollTop() > 100) {
